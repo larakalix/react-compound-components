@@ -1,6 +1,10 @@
 import { products } from "../data/products";
 import { Product } from "../components/product-card/interfaces/interfaces";
-import { ProductCardInfo, ProductCardVariants, ProductCardActions, ProductCard } from "../components/product-card";
+import {
+    ProductCardInfo,
+    ProductCardActions,
+    ProductCard,
+} from "../components/product-card";
 
 export const ShoppingPage = () => {
     return (
@@ -10,11 +14,12 @@ export const ShoppingPage = () => {
             </h1>
             <div className="flex flex-row flex-wrap">
                 {products.map(({ id, ...props }: Product) => (
-                    <ProductCard key={id} product={{ id, ...props }}>
+                    <ProductCard
+                        key={id}
+                        product={{ id, ...props }}
+                    >
                         <ProductCardInfo />
-                        <ProductCardVariants />
-                        {/* <ProductCardActions /> */}
-                        <ProductCard.Actions />
+                        <ProductCardActions />
                     </ProductCard>
                 ))}
             </div>

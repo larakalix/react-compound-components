@@ -38,6 +38,7 @@ export const products: Product[] = [
             { name: "Black", price: "345.00", stock: 1 },
         ],
         onlyShow: true,
+        styles: "bg-yellow-200 rounded-lg"
     },
     {
         id: '332rnefhuifu',

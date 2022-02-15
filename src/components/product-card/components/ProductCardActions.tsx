@@ -1,18 +1,15 @@
 import { useContext } from "react";
 import { ProductContext } from "../context/ProductContext";
+import { ProductCardActionsProps } from "../interfaces/interfaces";
+import { NotAvailable } from "./NotAvailable";
 
-export const ProductCardActions = () => {
+export const ProductCardActions = ({ styles }: ProductCardActionsProps) => {
     const { product, counter, increaseByValue } = useContext(ProductContext);
 
-    if (product.onlyShow)
-        return (
-            <div className="select-none">
-                <span className="text-gray-300 text-sm">Not available for purchase.</span>
-            </div>
-        );
+    if (product.onlyShow) return <NotAvailable />;
 
     return (
-        <div className="flex space-x-4 mb-6 text-sm font-medium">
+        <div className={`flex space-x-4 mb-6 text-sm font-medium ${styles}`}>
             <div className="flex-auto flex space-x-4">
                 <button
                     className="h-10 px-6 font-semibold rounded-md bg-black text-white"

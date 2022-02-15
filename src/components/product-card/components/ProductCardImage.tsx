@@ -3,7 +3,11 @@ import { useContext } from "react";
 import { ProductContext } from "../context/ProductContext";
 import { ProductCardImageProps } from "../interfaces/interfaces";
 
-export const ProductCardImage = ({ name, image }: ProductCardImageProps) => {
+export const ProductCardImage = ({
+    name,
+    image,
+    styles,
+}: ProductCardImageProps) => {
     const { product } = useContext(ProductContext);
     let src: string;
 
@@ -11,7 +15,7 @@ export const ProductCardImage = ({ name, image }: ProductCardImageProps) => {
     else src = product.image;
 
     return (
-        <div className="flex-none w-48 relative">
+        <div className={`flex-none w-48 relative ${styles}`}>
             <img
                 src={src}
                 alt={name}

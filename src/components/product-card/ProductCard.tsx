@@ -5,7 +5,11 @@ import { ProductCardImage } from "./components/ProductCardImage";
 
 const { Provider } = ProductContext;
 
-export const ProductCard = ({ children, product }: ProductCardProps) => {
+export const ProductCard = ({
+    children,
+    product,
+    styles,
+}: ProductCardProps) => {
     const { counter, increaseByValue } = useProduct();
 
     return (
@@ -16,7 +20,11 @@ export const ProductCard = ({ children, product }: ProductCardProps) => {
                 increaseByValue,
             }}
         >
-            <div className="flex font-sans p-4 w-full md:w-[50vw]">
+            <div
+                className={`flex font-sans p-4 w-full md:w-[50vw] ${
+                    styles ? styles : product.styles
+                }`}
+            >
                 <ProductCardImage />
                 <div className="flex-auto p-6">{children}</div>
             </div>

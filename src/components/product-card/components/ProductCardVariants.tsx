@@ -2,13 +2,18 @@ import { useContext } from "react";
 import { ProductContext } from "../context/ProductContext";
 import { ProductCardVariantsProps, Variants } from "../interfaces/interfaces";
 
-export const ProductCardVariants = ({ variants }: ProductCardVariantsProps) => {
+export const ProductCardVariants = ({
+    variants,
+    styles,
+}: ProductCardVariantsProps) => {
     const { product } = useContext(ProductContext);
     let items: Variants[] = variants ? [...variants] : [...product.variants];
 
     return (
         <form>
-            <div className="flex items-baseline mt-4 mb-6 pb-6 border-b border-slate-200">
+            <div
+                className={`flex items-baseline mt-4 mb-6 pb-6 border-b border-slate-200 ${styles}`}
+            >
                 <div className="space-x-2 flex text-sm">
                     {items.map(({ name, price }: Variants, index: number) => (
                         <label key={index}>

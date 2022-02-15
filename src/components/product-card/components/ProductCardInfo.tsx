@@ -3,7 +3,11 @@ import { useContext } from "react";
 import { ProductContext } from "../context/ProductContext";
 import { ProductCardInfoProps } from "../interfaces/interfaces";
 
-export const ProductCardInfo = ({ name, price }: ProductCardInfoProps) => {
+export const ProductCardInfo = ({
+    name,
+    price,
+    styles,
+}: ProductCardInfoProps) => {
     const { product } = useContext(ProductContext);
     const stockStyles = clsx({
         ["text-slate-700"]: product.stock > 0,
@@ -11,7 +15,7 @@ export const ProductCardInfo = ({ name, price }: ProductCardInfoProps) => {
     });
 
     return (
-        <div className="flex flex-wrap">
+        <div className={`flex flex-wrap ${styles}`}>
             <h1 className="flex-auto text-lg font-semibold text-slate-900">
                 {name ? name : product.name}
             </h1>
