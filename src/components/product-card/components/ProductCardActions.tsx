@@ -1,0 +1,41 @@
+import { useContext } from "react";
+import { ProductContext } from "../context/ProductContext";
+
+export const ProductCardActions = () => {
+    const { product, counter, increaseByValue } = useContext(ProductContext);
+
+    if (product.onlyShow)
+        return (
+            <div className="select-none">
+                <span className="text-gray-300 text-sm">Not available for purchase.</span>
+            </div>
+        );
+
+    return (
+        <div className="flex space-x-4 mb-6 text-sm font-medium">
+            <div className="flex-auto flex space-x-4">
+                <button
+                    className="h-10 px-6 font-semibold rounded-md bg-black text-white"
+                    type="submit"
+                >
+                    Add to bag
+                </button>
+                <div className="flex items-center justify-between h-10 px-4 font-semibold rounded-md border border-slate-200 text-slate-900">
+                    <div
+                        className="font-bold cursor-pointer select-none"
+                        onClick={() => increaseByValue(-1)}
+                    >
+                        -
+                    </div>
+                    <div className="my-2 mx-4 select-none">{counter}</div>
+                    <div
+                        className="font-bold cursor-pointer select-none"
+                        onClick={() => increaseByValue(1)}
+                    >
+                        +
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
